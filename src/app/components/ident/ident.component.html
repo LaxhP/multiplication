@@ -1,0 +1,25 @@
+<section class="section">
+    <div class="container">
+        <div class="columns is-centered">
+            <div class="column is-half">
+                <form [formGroup]="identForm" (ngSubmit)="choix()">
+                    <div class="field">
+                        <label class="label">Entrez un nombre</label>
+                        <div class="control">
+                            <input  type="number" placeholder="chiffre" value="" formControlName="chiffre">
+                        </div>
+                        <label class="label">Entrez un nombre de tables</label>
+                        <div class="control">
+                            <input  type="number" placeholder="nombre de table" value="" formControlName="nbTables">
+                        </div>
+                    </div>
+                    <div class="field is-grouped">
+                        <div class="control">
+                            <button class="button is-link" type="submit">Soumettre</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>

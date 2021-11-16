@@ -25,3 +25,70 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+
+
+## Partie 1
+
+
+ ```plantuml
+@startuml component
+
+class App{
+}
+
+class Ident{
+
+}
+
+class TablesMultiplication{
+
+}
+
+class TableMultiplication{
+    
+}
+
+App-->Ident
+Ident-->TableMultiplication
+Ident-->TablesMultiplication
+App-->TablesMultiplication
+App-->TableMultiplication
+TablesMultiplication-->TableMultiplication
+
+
+@enduml
+
+``` 
+
+
+```plantuml
+@startuml component
+
+class Play {
+  id
+  name
+}
+
+class Film {
+  id
+  name
+  rank
+  imagepath
+}
+
+class Person {
+  id
+  name
+}
+
+Play "*"  -- " 1   " Person
+Play " * "  -- "1" Film
+
+Film " * directedFilms" - "1 \ndirector" Person :"                                           "
+hide circle
+
+@enduml
+
+```
+
+

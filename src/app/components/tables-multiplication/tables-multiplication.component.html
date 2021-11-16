@@ -1,0 +1,5 @@
+<h3>Nombre de table : {{nbTable}}</h3>
+
+<div *ngFor='let in of counter(nbTable + 1) ;let i = index'>
+    <app-table-multiplication [chiffre]="i"></app-table-multiplication>
+</div>
