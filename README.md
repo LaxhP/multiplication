@@ -76,7 +76,7 @@ Pour chaque `i`(de 1 à `nbTable`) on afficher la table de multiplication.
 
 
 
-![](uml.png)
+![](http://www.plantuml.com/plantuml/png/SoWkIImgAStDuKhEIImkLd0iAAZcoizppiXCIojATKn9IKtHqEJAImf9JCg1SskXYZrJKlDAghboKg7AhHGyyqfIqrEBO1eG0iaP-PaLVab8ci4AYdrBSqeo2t8oanDBClFpgZ4qeYf7LvsBmWSQdWnn250Nq2DAXaeskhfsG0hiKAWGH0IRxPWAqEInQL8orDFB0-a1Cx1gSqZDIm66C000)
 
 
 
