@@ -1,94 +1,85 @@
-# Multiplication
+## TP Multiplication
+Lien : https://github.com/LaxhP/multiplication
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.0.1.
-
-## Development server
-
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
-
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
-
-
-## Partie 1
-
-
- ```plantuml
-@startuml component
-
-class App{
-}
-
-class Ident{
-
-}
-
-class TablesMultiplication{
-
-}
-
-class TableMultiplication{
-    
-}
-
-App-->Ident
-Ident-->TableMultiplication
-Ident-->TablesMultiplication
-App-->TablesMultiplication
-App-->TableMultiplication
-TablesMultiplication-->TableMultiplication
-
-
-@enduml
-
-``` 
-
-
-```plantuml
-@startuml component
-
-class Play {
-  id
-  name
-}
-
-class Film {
-  id
-  name
-  rank
-  imagepath
-}
-
-class Person {
-  id
-  name
-}
-
-Play "*"  -- " 1   " Person
-Play " * "  -- "1" Film
-
-Film " * directedFilms" - "1 \ndirector" Person :"                                           "
-hide circle
-
-@enduml
-
+Pour commencer, j'ai créée un composant ident. Dans la vue du composant j'ai crée un formulaire qui envoie deux paramètre au composant: un nombre qui va correspondre à la multiplication affiché(partie 1) et un nombre de table à afficher(partie 1).
+```html
+<form [formGroup]="identForm" (ngSubmit)="choixNb()">
+<div class="field">
+<label class="label">Entrez un nombre</label>
+<div class="control">
+<input  type="number" placeholder="chiffre" value="" formControlName="chiffre">
+</div>
 ```
+
+Lorsqu'on va remplir le formulaire, la fonction choixNb() va s'executer. Elle va envoyer les paramètre au composant parent (app).
+
+```ts
+choixNb() {
+    let chiffre = this.identForm.value.chiffre;
+    console.log("le chiffre choisi est :" + chiffre);
+    this.leChiffre.emit(this.identForm.value.chiffre);
+
+
+
+@Output() leChiffre = new EventEmitter<number>();
+```
+
+Dans le composant parent, on récupère le paramètre grâce aux event, puis on le renvoit dans le composant table-multiplication.
+
+```html
+<app-ident  (leChiffre)="onChiffreAdded($event)" (nbTable)="nbTableAdded($event)"></app-ident>
+<app-table-multiplication [chiffre]="chiffre" ></app-table-multiplication>
+```
+
+
+
+On va le récuperer grace au input, puis on va l'utiliser dans la fonction multiplication qui va retourner un tableau avec les résultats des produits. 
+
+
+```ts
+  @Input() chiffre!: number;
+
+
+  multiplication(): number[] {
+
+    var table: number[] = [];
+    if (this.chiffre) {
+      for (let i = 1; i <= 10; i++) {
+        let x = this.chiffre * i;
+        table.push(x);
+      }
+      return table;
+    }
+    return table;
+  }
+```
+
+Puis dans la vue on affichera le tableau.
+
+```html
+<table>
+    <tr *ngFor="let x of multiplication(); let i = index">
+        <td>{{chiffre}} x {{i+1}} = {{x}}</td>
+    </tr>
+</table>
+```
+
+Le fonctionnement est similaire pour `tables-multiplication`. On va rècuperer `nbTable` depuis le composant app. Puis on va appeler le composant `table-composant` directement depuis `tables-composant`.
+
+```html
+<div *ngFor='let in of counter(nbTable + 1) ;let i = index'>
+    <app-table-multiplication [chiffre]="i"></app-table-multiplication>
+</div>
+```
+Pour chaque `i`(de 1 à `nbTable`) on afficher la table de multiplication.
+
+
+
+
+![](uml.png)
+
+
+
+
 
 

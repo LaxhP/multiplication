@@ -23,7 +23,7 @@ export class IdentComponent implements OnInit {
 
   get formControls() { return this.identForm.controls; }
 
-  choix() {
+  choixNb() {
     let chiffre = this.identForm.value.chiffre;
     console.log("le chiffre choisi est :" + chiffre);
     this.leChiffre.emit(this.identForm.value.chiffre);

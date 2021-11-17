@@ -20,7 +20,5 @@ export class AppComponent {
     this.nbtables = event;
   }
 
-  getChiffre() {
-    return this.chiffre != 0;
-  }
+
 }
