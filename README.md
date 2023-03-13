@@ -1,6 +1,8 @@
 ## TP Multiplication
 Lien : https://github.com/LaxhP/multiplication
 
+L'objectif de ce TP est d'afficher une table de multiplication en utilisant Angular.
+
 Pour commencer, j'ai créée un composant ident. Dans la vue du composant j'ai crée un formulaire qui envoie deux paramètre au composant: un nombre qui va correspondre à la multiplication affiché(partie 1) et un nombre de table à afficher(partie 1).
 ```html
 <form [formGroup]="identForm" (ngSubmit)="choixNb()">
